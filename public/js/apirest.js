@@ -1,4 +1,4 @@
-const URL = '/api/contacts/'
+const URL = '/api/contacts'
 let contacts = [];
 
 function buttons(id) {
@@ -38,7 +38,7 @@ function getContacts() {
 }
 
 function getContact(id) {
-    fetch(URL + id)
+    fetch(`${URL}/${id}`)
         .then(res => res.json())
         .then(data => {
             console.log('Contact shown successfully');
@@ -81,7 +81,7 @@ function addContact() {
 }
 
 function editContact(id) {
-    fetch(URL + id, {
+    fetch(`${URL}/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function editContact(id) {
 }
 
 function delContact(id) {
-    fetch(URL + id, {method: 'DELETE'})
+    fetch(`${URL}/${id}`, {method: 'DELETE'})
         .then(res => {
             if (res.ok) {
                 console.log('Contact deleted successfully');
